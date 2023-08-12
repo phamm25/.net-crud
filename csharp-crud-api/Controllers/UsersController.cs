@@ -36,4 +36,14 @@ public class UsersController : ControllerBase
 
     return user;
   }
+
+    // POST api/users
+  [HttpPost]
+  public async Task<ActionResult<User>> PostUser(User user)
+  {
+    _context.Users.Add(user);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+  }
 }
