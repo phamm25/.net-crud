@@ -46,4 +46,19 @@ public class UsersController : ControllerBase
 
     return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
   }
+
+    // PUT api/users/5
+  [HttpPut("{id}")]
+  public async Task<IActionResult> PutUser(int id, User user)
+  {
+    if (id != user.Id)
+    {
+      return BadRequest();
+    }
+
+    _context.Entry(user).State = EntityState.Modified;
+    await _context.SaveChangesAsync();
+
+    return NoContent();
+  }
 }
