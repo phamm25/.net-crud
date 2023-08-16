@@ -23,7 +23,7 @@ public class UsersController : ControllerBase
     return await _context.Users.ToListAsync();
   }
 
-  // GET: api/users/5
+  // GET: api/users
   [HttpGet("{id}")]
   public async Task<ActionResult<User>> GetUser(int id)
   {
